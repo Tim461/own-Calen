@@ -1,10 +1,10 @@
-name: Update Jin10 Futures Calendar
+name: Update Jin10 Data Calendar
 
 on:
   schedule:
-    # 每天北京时间早上 7 点运行 (UTC 23:00)
-    - cron: '0 23 * * *'
-  workflow_dispatch:      # 允许手动运行
+    # 每天北京时间早上 8:00 运行
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,50 +17,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 1. 安装 Chrome 浏览器环境
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
         with:
           chrome-version: stable
 
-      # 2. 安装 Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      # 3. 安装依赖
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 4. 运行 Python 脚本
       - name: Run script
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: python main.py
 
-      # 5. 提交并推送到仓库
       - name: Commit and push changes
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 尝试添加文件，如果文件不存在也不会报错
-          git add futures.ics || true
+          # 注意文件名要和 main.py 里的一致
+          git add jin10_calendar.ics || true
 
-          # 检查暂存区是否有变化
           if [ -z "$(git status --porcelain)" ]; then
-            echo "没有检测到文件变化，本次不提交。"
+            echo "无变化，跳过。"
             exit 0
           fi
 
-          echo "检测到日历更新，准备提交..."
-          git commit -m "Auto-update futures calendar [$(date)]"
-          
-          # --- 关键：先拉取远程代码，防止冲突 ---
+          echo "发现新数据，正在提交..."
+          git commit -m "Update calendar data [$(date)]"
           git pull --rebase origin main
-          
-          # 推送
           git push origin main
