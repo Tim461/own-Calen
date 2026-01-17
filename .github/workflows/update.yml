@@ -2,9 +2,8 @@ name: Update Jin10 Futures Calendar
 
 on:
   schedule:
-    # 每天北京时间早上 7 点运行 (UTC 23:00)
-    - cron: '0 23 * * *'
-  workflow_dispatch:
+    - cron: '0 23 * * *' # 每天北京时间早上7点
+  workflow_dispatch:      # 允许手动运行
 
 permissions:
   contents: write
@@ -17,6 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 1. 显式安装 Chrome 浏览器
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -28,6 +33,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run script
+        env:
+          # 将浏览器路径传递给 Python
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: python main.py
 
       - name: Commit and push
@@ -35,5 +43,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add futures.ics
-          # 只有文件有变化才提交
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update futures calendar [$(date)]" && git push)
