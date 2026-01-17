@@ -1,99 +1,127 @@
-import requests
-import json
-from ics import Calendar, Event
+import time
+import re
 from datetime import datetime, timedelta
 import pytz
-import sys
+from ics import Calendar, Event
 
-# --- 配置区域 ---
-# 金十期货日历通常按日期分文件存储
-# 格式示例: https://cdn.jin10.com/dc/reports/dc_futures_event_20231027.json
-# 如果你发现自动抓取失败，请在浏览器F12->Network中找到以 .json 结尾的请求，
-# 将其 URL 规律复制到这里。
-BASE_URL_TEMPLATE = "https://cdn.jin10.com/dc/reports/dc_futures_event_{date}.json"
+# 引入浏览器自动化相关库
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
 
-def fetch_data(date_str):
-    url = BASE_URL_TEMPLATE.format(date=date_str)
-    print(f"正在尝试抓取: {url}")
+def get_html_via_selenium(url):
+    print(f"正在启动浏览器访问: {url}")
     
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://qihuo.jin10.com/',
-        'Origin': 'https://qihuo.jin10.com'
-    }
+    # 配置无界面浏览器 (Headless Chrome)
+    chrome_options = Options()
+    chrome_options.add_argument("--headless=new") # 无界面模式
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    # 伪装 User-Agent，防止被识别为机器人
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
+    # 安装并启动 Chrome
+    service = ChromeService(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     
     try:
-        resp = requests.get(url, headers=headers, timeout=10)
-        if resp.status_code == 200:
-            return resp.json()
-        else:
-            print(f"请求失败 (Status {resp.status_code}) - 该日期可能无数据或URL规则已变")
-            return []
+        driver.get(url)
+        # 强制等待 10 秒，确保金十的动态数据加载完成
+        # 这是一个笨办法，但对于不需要高频抓取的任务最稳定
+        print("网页加载中，等待 10 秒...")
+        time.sleep(10)
+        
+        # 获取渲染后的网页源代码
+        page_source = driver.page_source
+        return page_source
     except Exception as e:
-        print(f"请求异常: {e}")
-        return []
+        print(f"浏览器运行出错: {e}")
+        return None
+    finally:
+        driver.quit()
 
-def generate_calendar():
+def parse_and_generate_ics(html_content):
+    if not html_content:
+        print("未获取到网页内容")
+        return
+
+    soup = BeautifulSoup(html_content, 'html.parser')
     cal = Calendar()
+    count = 0
     
-    # 抓取今天及未来7天的数据
-    today = datetime.now(pytz.timezone('Asia/Shanghai'))
+    # 获取当前日期，用于处理只有时间没有日期的事件
+    today_date = datetime.now(pytz.timezone('Asia/Shanghai')).date()
+
+    # --- 解析逻辑 ---
+    # 金十期货页面的结构经常变，这里使用模糊查找策略
+    # 我们查找包含期货交易所名称或特定关键词的行
     
-    for i in range(8):
-        current_day = today + timedelta(days=i)
-        date_str = current_day.strftime('%Y%m%d') # 格式化为 20231027
-        
-        events = fetch_data(date_str)
-        
-        if not events:
-            continue
-            
-        # 金十期货日历通常返回一个列表，包含多个类别的事件
-        # 结构可能为: [{'date': '...', 'event_content': '...', 'country': '...'}]
-        # 注意：不同接口返回字段可能不同，需做容错
-        
-        for item in events:
+    # 查找所有的表格行或列表项
+    # 金十通常使用 div 布局，我们尝试抓取所有包含文本的 div/a/span
+    # 这里通过“包含时间格式”的特征来定位事件
+    
+    # 提取网页中所有可见文本，按行分割
+    text_lines = soup.get_text("\n", strip=True).split("\n")
+    
+    current_date_obj = today_date
+    
+    for i, line in enumerate(text_lines):
+        # 1. 尝试识别日期行 (例如 "2023年10月27日 星期五")
+        if "年" in line and "月" in line and "日" in line:
             try:
-                # 过滤掉非重要数据（可选）
-                
-                evt = Event()
-                
-                # 提取标题
-                # 金十字段多变，这里列举常见字段名
-                title = item.get('event_content') or item.get('name') or item.get('title') or '未命名期货事件'
-                exchange = item.get('exchange_name') or item.get('country') or ''
-                
-                # 组合标题
-                evt.name = f"[{exchange}] {title}"
-                
-                # 处理时间
-                # 接口通常返回 "2023-10-27" 或具体时间戳
-                event_date_str = item.get('date') or item.get('public_date')
-                if not event_date_str:
+                # 简单的正则提取日期 202X-XX-XX
+                date_match = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', line)
+                if date_match:
+                    current_date_obj = datetime(
+                        int(date_match.group(1)),
+                        int(date_match.group(2)),
+                        int(date_match.group(3))
+                    ).date()
+                    print(f"发现日期分组: {current_date_obj}")
                     continue
-                
-                # 如果只有日期没有时间，设为全天事件
-                # 如果有具体时间（如 21:00），解析它
-                # 这里简单处理为全天事件，因为期货交割日、最后交易日通常是全天性质
-                dt_start = datetime.strptime(event_date_str, '%Y-%m-%d')
-                evt.begin = dt_start
-                evt.make_all_day()
-                
-                # 描述信息
-                detail = item.get('remark') or item.get('detail') or ''
-                evt.description = f"交易所: {exchange}\n日期: {event_date_str}\n备注: {detail}\n来源: 金十期货"
-                
-                cal.events.add(evt)
-                
-            except Exception as e:
-                print(f"解析单条数据出错: {e}, 数据: {item}")
+            except:
+                pass
+
+        # 2. 尝试识别具体事件
+        # 期货日历通常包含: [交易所名称] [事件内容]
+        # 常见交易所: CFFEX, SHFE, DCE, CZCE, LME, COMEX, NYMEX, INE
+        keywords = ['CFFEX', 'SHFE', 'DCE', 'CZCE', 'LME', 'COMEX', 'NYMEX', 'INE', '中金所', '上期所', '大商所', '郑商所', '最后交易日', '到期日', '休市']
+        
+        if any(kw in line.upper() for kw in keywords):
+            # 这是一个潜在的事件行
+            event_text = line.strip()
+            
+            # 过滤掉太短的干扰文本
+            if len(event_text) < 4: 
                 continue
 
+            # 创建事件
+            evt = Event()
+            evt.name = event_text
+            evt.begin = current_date_obj
+            evt.make_all_day() # 期货事件通常是全天
+            evt.description = f"来源: 金十期货\n原文: {event_text}"
+            
+            cal.events.add(evt)
+            count += 1
+            print(f"添加事件: [{current_date_obj}] {event_text}")
+
     # 保存文件
-    output_file = 'futures.ics'
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.writelines(cal.serialize())
-    print(f"日历生成完毕: {output_file}")
+    if count > 0:
+        with open('futures.ics', 'w', encoding='utf-8') as f:
+            f.writelines(cal.serialize())
+        print(f"成功生成 futures.ics，共包含 {count} 个事件")
+    else:
+        print("警告: 未解析到任何事件。可能是页面结构发生了剧烈变化。")
+        # 调试用：保存网页源码看看到底抓到了什么
+        # with open('debug.html', 'w', encoding='utf-8') as f:
+        #    f.write(soup.prettify())
 
 if __name__ == "__main__":
-    generate_calendar()
+    url = "https://qihuo.jin10.com/calendar.html#/"
+    html = get_html_via_selenium(url)
+    parse_and_generate_ics(html)
