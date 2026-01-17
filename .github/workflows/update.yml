@@ -2,7 +2,7 @@ name: Update Jin10 Data Calendar
 
 on:
   schedule:
-    # 每天北京时间早上 8:00 (UTC 00:00) 运行
+    # 每天北京时间早上 8:00 运行
     - cron: '0 0 * * *'
   workflow_dispatch:
 
@@ -42,10 +42,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 确保添加生成的 .ics 文件
+          # 注意文件名要和 main.py 里的一致
           git add jin10_calendar.ics || true
 
-          # 检查是否有变更，无变更则退出
           if [ -z "$(git status --porcelain)" ]; then
             echo "无变化，跳过。"
             exit 0
