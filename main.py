@@ -1,12 +1,14 @@
 import time
 import re
-from datetime import datetime, timedelta
+import os
+import traceback
+from datetime import datetime
 import pytz
 from ics import Calendar, Event
 
-# 引入浏览器自动化相关库
+# 引入 Selenium
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
@@ -14,66 +16,75 @@ from bs4 import BeautifulSoup
 def get_html_via_selenium(url):
     print(f"正在启动浏览器访问: {url}")
     
-    # 配置无界面浏览器 (Headless Chrome)
-    chrome_options = Options()
-    chrome_options.add_argument("--headless=new") # 无界面模式
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
-    # 伪装 User-Agent，防止被识别为机器人
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    options = Options()
+    # 核心修复：添加适应服务器环境的参数
+    options.add_argument("--headless") # 无头模式
+    options.add_argument("--no-sandbox") # 绕过沙盒限制
+    options.add_argument("--disable-dev-shm-usage") # 解决内存不足问题
+    options.add_argument("--disable-gpu")
+    options.add_argument("--remote-debugging-port=9222") # 解决DevTools报错
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-    # 安装并启动 Chrome
-    service = ChromeService(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    
+    # 如果环境变量中有 Chrome 路径（由 GitHub Action 注入），则使用它
+    chrome_binary_path = os.environ.get("CHROME_PATH")
+    if chrome_binary_path:
+        print(f"使用指定的 Chrome 路径: {chrome_binary_path}")
+        options.binary_location = chrome_binary_path
+
+    driver = None
     try:
-        driver.get(url)
-        # 强制等待 10 秒，确保金十的动态数据加载完成
-        # 这是一个笨办法，但对于不需要高频抓取的任务最稳定
-        print("网页加载中，等待 10 秒...")
-        time.sleep(10)
+        # 使用 webdriver_manager 自动匹配驱动
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
         
-        # 获取渲染后的网页源代码
+        driver.get(url)
+        print("网页已打开，等待数据加载 (15秒)...")
+        time.sleep(15) # 适当延长等待时间
+        
         page_source = driver.page_source
         return page_source
+
     except Exception as e:
-        print(f"浏览器运行出错: {e}")
+        print("!!! 浏览器启动或执行失败 !!!")
+        print(traceback.format_exc()) # 打印完整的错误详情
         return None
+        
     finally:
-        driver.quit()
+        if driver:
+            try:
+                driver.quit()
+            except:
+                pass
 
 def parse_and_generate_ics(html_content):
     if not html_content:
-        print("未获取到网页内容")
-        return
+        print("错误: 网页内容为空，无法生成日历")
+        # 抛出异常以触发 Action 失败，引起注意
+        exit(1)
 
     soup = BeautifulSoup(html_content, 'html.parser')
     cal = Calendar()
     count = 0
     
-    # 获取当前日期，用于处理只有时间没有日期的事件
+    # 获取今天日期
     today_date = datetime.now(pytz.timezone('Asia/Shanghai')).date()
-
-    # --- 解析逻辑 ---
-    # 金十期货页面的结构经常变，这里使用模糊查找策略
-    # 我们查找包含期货交易所名称或特定关键词的行
-    
-    # 查找所有的表格行或列表项
-    # 金十通常使用 div 布局，我们尝试抓取所有包含文本的 div/a/span
-    # 这里通过“包含时间格式”的特征来定位事件
-    
-    # 提取网页中所有可见文本，按行分割
-    text_lines = soup.get_text("\n", strip=True).split("\n")
-    
     current_date_obj = today_date
     
-    for i, line in enumerate(text_lines):
-        # 1. 尝试识别日期行 (例如 "2023年10月27日 星期五")
+    # 提取所有文本行
+    text_lines = soup.get_text("\n", strip=True).split("\n")
+    
+    # 关键词过滤
+    target_exchanges = ['CFFEX', 'SHFE', 'DCE', 'CZCE', 'LME', 'COMEX', 'NYMEX', 'INE', '中金所', '上期所', '大商所', '郑商所']
+    event_keywords = ['最后交易日', '首个通知日', '到期日', '休市']
+
+    print(f"开始解析网页文本，共 {len(text_lines)} 行...")
+
+    for line in text_lines:
+        line = line.strip()
+        
+        # 1. 尝试识别日期行 (格式如: 2023年10月27日 星期五)
         if "年" in line and "月" in line and "日" in line:
             try:
-                # 简单的正则提取日期 202X-XX-XX
                 date_match = re.search(r'(\d{4})年(\d{1,2})月(\d{1,2})日', line)
                 if date_match:
                     current_date_obj = datetime(
@@ -81,47 +92,45 @@ def parse_and_generate_ics(html_content):
                         int(date_match.group(2)),
                         int(date_match.group(3))
                     ).date()
-                    print(f"发现日期分组: {current_date_obj}")
                     continue
             except:
                 pass
 
-        # 2. 尝试识别具体事件
-        # 期货日历通常包含: [交易所名称] [事件内容]
-        # 常见交易所: CFFEX, SHFE, DCE, CZCE, LME, COMEX, NYMEX, INE
-        keywords = ['CFFEX', 'SHFE', 'DCE', 'CZCE', 'LME', 'COMEX', 'NYMEX', 'INE', '中金所', '上期所', '大商所', '郑商所', '最后交易日', '到期日', '休市']
+        # 2. 识别事件
+        # 条件：包含交易所名称 OR 包含特定事件关键词
+        is_exchange = any(k in line.upper() for k in target_exchanges)
+        is_event_type = any(k in line for k in event_keywords)
         
-        if any(kw in line.upper() for kw in keywords):
-            # 这是一个潜在的事件行
-            event_text = line.strip()
-            
-            # 过滤掉太短的干扰文本
-            if len(event_text) < 4: 
+        if (is_exchange or is_event_type) and len(line) > 4:
+            # 排除纯数字或太短的干扰项
+            if re.match(r'^\d+$', line):
                 continue
-
-            # 创建事件
+                
             evt = Event()
-            evt.name = event_text
+            evt.name = line
             evt.begin = current_date_obj
-            evt.make_all_day() # 期货事件通常是全天
-            evt.description = f"来源: 金十期货\n原文: {event_text}"
+            evt.make_all_day()
+            evt.description = f"来源: 金十期货\n原文: {line}"
             
             cal.events.add(evt)
             count += 1
-            print(f"添加事件: [{current_date_obj}] {event_text}")
 
-    # 保存文件
     if count > 0:
         with open('futures.ics', 'w', encoding='utf-8') as f:
             f.writelines(cal.serialize())
-        print(f"成功生成 futures.ics，共包含 {count} 个事件")
+        print(f"成功: 已生成 futures.ics，包含 {count} 个事件")
     else:
-        print("警告: 未解析到任何事件。可能是页面结构发生了剧烈变化。")
-        # 调试用：保存网页源码看看到底抓到了什么
-        # with open('debug.html', 'w', encoding='utf-8') as f:
-        #    f.write(soup.prettify())
+        print("警告: 脚本运行成功，但没有抓取到任何事件。")
+        print("可能原因: 1. 今日无重要事件 2. 网页结构变更 3. 浏览器被反爬")
+        # 打印部分网页内容帮助调试
+        print("调试 - 网页前500字符:", html_content[:500])
 
 if __name__ == "__main__":
-    url = "https://qihuo.jin10.com/calendar.html#/"
-    html = get_html_via_selenium(url)
-    parse_and_generate_ics(html)
+    try:
+        url = "https://qihuo.jin10.com/calendar.html#/"
+        html = get_html_via_selenium(url)
+        parse_and_generate_ics(html)
+    except Exception as e:
+        print("程序发生未捕获异常:")
+        print(traceback.format_exc())
+        exit(1)
