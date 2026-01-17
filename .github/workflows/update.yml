@@ -16,7 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 1. 显式安装 Chrome 浏览器
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@latest
         with:
@@ -34,13 +33,30 @@ jobs:
 
       - name: Run script
         env:
-          # 将浏览器路径传递给 Python
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: python main.py
 
-      - name: Commit and push
+      # --- 修复的部分在这里 ---
+      - name: Commit and push changes
         run: |
+          # 配置 git 用户
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 确保文件存在（防止 Python 脚本没生成文件导致 git add 报错）
+          if [ ! -f futures.ics ]; then
+            echo "Error: futures.ics file was not generated."
+            exit 0 # 这里我们选择不报错退出，而是提示一下
+          fi
+
+          # 添加文件
           git add futures.ics
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update futures calendar [$(date)]" && git push)
+          
+          # 检查是否有状态改变
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "没有检测到文件变化，跳过提交。"
+          else
+            echo "检测到变化，正在提交..."
+            git commit -m "Auto-update futures calendar [$(date)]"
+            git push
+          fi
