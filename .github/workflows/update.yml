@@ -1,10 +1,9 @@
-name: Update Jin10 Data Calendar
+name: Update Specific Dates Data
 
 on:
+  workflow_dispatch: # 手动运行，因为是抓取特定历史/未来日期
   schedule:
-    # 每天北京时间早上 8:00 运行
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 22 * * *' # 也可以每天运行一次
 
 permissions:
   contents: write
@@ -42,15 +41,14 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 注意文件名要和 main.py 里的一致
-          git add jin10_calendar.ics || true
+          git add jin10_data_specific.ics || true
 
           if [ -z "$(git status --porcelain)" ]; then
-            echo "无变化，跳过。"
+            echo "无变化。"
             exit 0
           fi
 
-          echo "发现新数据，正在提交..."
-          git commit -m "Update calendar data [$(date)]"
+          echo "提交更新..."
+          git commit -m "Update specific dates data"
           git pull --rebase origin main
           git push origin main
