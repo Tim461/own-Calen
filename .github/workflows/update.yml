@@ -1,9 +1,9 @@
-name: Update Jin10 Data Calendar
+name: Update Economic Calendar
 
 on:
   schedule:
-    # 每天北京时间早上 8:00 运行
-    - cron: '0 0 * * *'
+    # 每天北京时间早上 7 点更新
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 permissions:
@@ -42,15 +42,15 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 注意文件名要和 main.py 里的一致
-          git add jin10_calendar.ics || true
+          # 注意文件名
+          git add economic_calendar.ics || true
 
           if [ -z "$(git status --porcelain)" ]; then
             echo "无变化，跳过。"
             exit 0
           fi
 
-          echo "发现新数据，正在提交..."
-          git commit -m "Update calendar data [$(date)]"
+          echo "提交更新..."
+          git commit -m "Update economic calendar [$(date)]"
           git pull --rebase origin main
           git push origin main
