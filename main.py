@@ -13,15 +13,6 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
-# --- 指定你要抓取的这4个日期 ---
-TARGET_DATES = [
-    "2026-01-14",
-    "2026-01-15",
-    "2026-01-16",
-    "2026-01-20"
-]
-# -----------------------------
-
 def get_driver():
     options = Options()
     options.add_argument("--headless=new") 
@@ -44,155 +35,187 @@ def get_driver():
         print(f"浏览器初始化失败: {e}")
         return None
 
-def is_value_column(text):
-    """判断一列是否像是一个数值（前值/预测/公布）"""
-    # 特征：长度短，包含数字，或者就是 '--'
-    # 排除纯文字（除非是非常短的状态描述）
-    if len(text) > 15: return False # 数值通常不会这么长
-    if "--" in text: return True
-    if re.search(r'\d', text): return True # 包含数字
-    if text in ["待定", "无", "休市"]: return True
-    return False
-
-def parse_day_content(html_content, current_date):
-    events = []
-    soup = BeautifulSoup(html_content, 'html.parser')
+def parse_time_str(time_str, current_date):
+    """
+    辅助函数：解析时间字符串
+    返回: (start_dt, is_fuzzy)
+    """
+    # 移除可能的空白字符
+    time_str = time_str.strip()
     
-    # 查找所有行容器
-    rows = soup.find_all(['div', 'tr', 'li'])
-    
-    mode = "UNKNOWN"
-    processed_hashes = set()
-
-    for row in rows:
-        # 使用 | 分割保持列结构
-        row_str = row.get_text("|", strip=True)
-        
-        # 去重
-        h = hash(row_str)
-        if h in processed_hashes: continue
-        processed_hashes.add(h)
-
-        # 1. 识别 【经济数据一览】 板块
-        if "经济数据一览" in row_str and len(row_str) < 30:
-            mode = "DATA"
-            print(f"  -> 进入 [经济数据] 区域")
-            continue
-        elif "财经大事一览" in row_str or "期货日历" in row_str:
-            # 遇到其他板块，立即停止，防止混淆
-            mode = "OTHER" 
-            continue
-            
-        # 我们只关心 DATA 模式，且行里不能有表头
-        if mode != "DATA": continue
-        if "时间" in row_str and "前值" in row_str: continue
-
-        # 2. 拆分列
-        cols = [c.strip() for c in row_str.split('|') if c.strip()]
-        if not cols: continue
-
-        # 过滤：第一列必须是时间 HH:MM
-        if not re.match(r'^\d{2}:\d{2}$', cols[0]): continue
-
-        # === 核心逻辑：三段式夹击法 ===
-        # 目标：提取 [时间, 国家, 指标名称, (重要性), 前值, 预测, 公布]
-        
-        # A. 定左边 (Left Anchor)
-        # cols[0] 肯定是 时间
-        # cols[1] 通常是 国家 (如果缺失可能直接是名字，但金十通常都有国家)
-        time_str = cols[0]
-        country = cols[1]
-        
-        # B. 定右边 (Right Anchor)
-        # 从最后的一列往回看，收集所有的“数值列”
-        # 我们预期最多找3个数值 (公布, 预测, 前值)
-        values_found = [] # 存 [公布, 预测, 前值] (倒序)
-        
-        # 从列表末尾开始向前扫描
-        scan_index = len(cols) - 1
-        while scan_index > 1: # 也就是不能扫到国家那一列
-            val = cols[scan_index]
-            if is_value_column(val):
-                values_found.append(val)
-                scan_index -= 1
-            else:
-                # 一旦遇到一个不像数值的东西（大概率是指标名称的末尾，或者重要性），停止扫描
-                break
-        
-        # 还原数值顺序 (前值, 预测, 公布)
-        # 现在的 values_found 是倒序的，例如 ['3.4%', '3.5%', '3.6%'] -> 对应 [公布, 预测, 前值]
-        # 或者 ['--', '3.5%', '3.6%']
-        
-        prev, forecast, actual = "--", "--", "--"
-        
-        # 根据找到的数值数量进行填充
-        # 金十的标准顺序是: ... 前值 | 预测 | 公布
-        if len(values_found) >= 1: actual = values_found[0]
-        if len(values_found) >= 2: forecast = values_found[1]
-        if len(values_found) >= 3: prev = values_found[2]
-        
-        # C. 剩中间 (The Indicator Name)
-        # 中间的部分就是：从 Country 之后 (index 2)，到 values_found 之前 (scan_index)
-        # 注意：这里可能包含“重要性”（星星），通常表现为空白字符或者"高/中/低"文字
-        # 我们把中间剩下的所有文本拼起来，就是名字
-        
-        name_parts = cols[2 : scan_index + 1]
-        # 清洗名字：去掉可能混进来的“高”“中”“低”或者星星符号
-        raw_name = " ".join(name_parts)
-        
-        # 提取完名字，必须确保名字存在
-        if not raw_name.strip(): 
-            continue # 如果没有名字，这行数据无效
-
-        # 构造事件
-        evt = Event()
-        evt.name = f"📊[{country}] {raw_name}"
-        
-        # 时间解析
+    # 情况1: 标准 HH:MM 格式 (例如 20:30)
+    if re.match(r'^\d{1,2}:\d{2}$', time_str):
         hm = time_str.split(':')
         start_dt = datetime(
             current_date.year, current_date.month, current_date.day,
             int(hm[0]), int(hm[1]), tzinfo=pytz.timezone('Asia/Shanghai')
         )
-        evt.begin = start_dt
-        evt.duration = timedelta(minutes=15)
-        
-        evt.description = (
-            f"【经济数据】\n"
-            f"国家: {country}\n"
-            f"指标: {raw_name}\n"
-            f"----------------\n"
-            f"前值: {prev}\n"
-            f"预测: {forecast}\n"
-            f"公布: {actual}\n"
+        return start_dt, False
+    
+    # 情况2: 汉字或非标准时间 (例如 "待定", "23日", "下午")
+    # 统一处理为当天的 00:00，并标记为模糊时间
+    else:
+        start_dt = datetime(
+            current_date.year, current_date.month, current_date.day,
+            0, 0, tzinfo=pytz.timezone('Asia/Shanghai')
         )
+        return start_dt, True
+
+def parse_day_content(html_content, current_date):
+    events = []
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # 使用 | 分隔符提取文本
+    raw_text = soup.get_text("|", strip=True)
+    
+    mode = "UNKNOWN" 
+    # 直接查找容器行，避免混乱
+    rows = soup.find_all(['div', 'tr', 'li'])
+    processed_hashes = set()
+
+    print(f"  正在分析页面结构...")
+
+    for row in rows:
+        row_str = row.get_text("|", strip=True)
         
-        events.append(evt)
-        print(f"    + [抓取成功] {time_str} {country} {raw_name} | 前:{prev} 预:{forecast} 公:{actual}")
+        # 1. 模式切换检测
+        if "经济数据一览" in row_str and len(row_str) < 30:
+            mode = "DATA"
+            print("    -> 切换到 [经济数据] 模式")
+            continue
+        elif "财经大事一览" in row_str and len(row_str) < 30:
+            mode = "EVENT"
+            print("    -> 切换到 [财经大事] 模式")
+            continue
+        elif "期货日历" in row_str or "休市日历" in row_str:
+            mode = "UNKNOWN"
+            continue
+            
+        if mode == "UNKNOWN":
+            continue
+
+        # 2. 数据行拆分
+        cols = [c.strip() for c in row_str.split('|') if c.strip()]
+        if not cols: continue
+
+        # 3. 过滤表头和干扰行
+        if any(h in row_str for h in ["前值", "预测值", "公布值", "详情", "今值", "重要性"]):
+            continue
+        
+        # 简单去重
+        row_hash = hash(row_str)
+        if row_hash in processed_hashes:
+            continue
+        processed_hashes.add(row_hash)
+
+        # --- 处理 [经济数据] ---
+        # 你的逻辑：时间 | (图标-无文本) | 指标名称 | ...
+        # 实际 cols: [时间, 指标名称, ..., 数值]
+        if mode == "DATA":
+            if len(cols) < 2: continue 
+
+            time_str = cols[0]
+            # 如果第一列太长，通常不是时间而是标题行
+            if len(time_str) > 10: continue
+
+            # 指标名称直接取第2列
+            name = cols[1] 
+            
+            # 提取数值：取最后3列作为候选
+            potential_values = cols[-3:] 
+            prev, forecast, actual = "--", "--", "--"
+            
+            # 只有当总列数足够时才尝试解析数值
+            if len(cols) >= 4:
+                if len(potential_values) == 3:
+                    prev, forecast, actual = potential_values
+                elif len(potential_values) == 2:
+                    prev, forecast = potential_values
+            
+            # 简单清洗非数值内容
+            def is_valid_val(s): return len(s) < 20 and (any(c.isdigit() for c in s) or '--' in s or '%' in s)
+            if not is_valid_val(prev): prev = "--"
+            if not is_valid_val(actual): actual = "--"
+
+            evt = Event()
+            start_dt, is_fuzzy = parse_time_str(time_str, current_date)
+            
+            prefix = f"[{time_str}]" if is_fuzzy else ""
+            evt.name = f"📊{prefix} {name}"
+            evt.begin = start_dt
+            evt.duration = timedelta(minutes=15)
+            
+            evt.description = (
+                f"【经济数据】\n"
+                f"时间: {time_str}\n"
+                f"指标: {name}\n"
+                f"------------------\n"
+                f"前值: {prev}\n"
+                f"预测: {forecast}\n"
+                f"公布: {actual}\n"
+            )
+            events.append(evt)
+            print(f"    [数据] {time_str} | {name} | 公布:{actual}")
+
+        # --- 处理 [财经大事] ---
+        # 你的逻辑：时间 | 国/区(汉字) | ... | 事件
+        # 实际 cols: [时间, 国家, 事件...]
+        elif mode == "EVENT":
+            if len(cols) < 3: continue
+
+            time_str = cols[0]
+            if len(time_str) > 10: continue
+
+            country = cols[1]
+            # 剩下的合并为内容
+            content = " ".join(cols[2:]) 
+
+            evt = Event()
+            start_dt, is_fuzzy = parse_time_str(time_str, current_date)
+
+            prefix = f"[{time_str}]" if is_fuzzy else ""
+            # 标题过长则截断
+            title_text = content[:20] + "..." if len(content) > 20 else content
+            evt.name = f"📢{prefix}[{country}] {title_text}"
+            
+            evt.begin = start_dt
+            evt.duration = timedelta(minutes=30)
+            
+            evt.description = (
+                f"【财经大事】\n"
+                f"时间: {time_str}\n"
+                f"地区: {country}\n"
+                f"事件: {content}\n"
+            )
+            events.append(evt)
+            print(f"    [大事] {time_str} | {country} | {title_text}")
 
     return events
 
 def run_scraper():
     cal = Calendar()
     driver = get_driver()
-    if not driver: exit(1)
+    if not driver:
+        exit(1)
 
     try:
         base_url = "https://qihuo.jin10.com/calendar.html#/"
+        today = datetime.now(pytz.timezone('Asia/Shanghai')).date()
+        
+        # 抓取今天 + 未来 7 天
+        days_to_scrape = 8 
         total_count = 0
 
-        # 遍历用户指定的 4 个日期
-        for date_str in TARGET_DATES:
-            target_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        for i in range(days_to_scrape):
+            target_date = today + timedelta(days=i)
+            date_str = target_date.strftime('%Y-%m-%d')
             full_url = f"{base_url}{date_str}"
             
-            print(f"\n=== 处理日期: {date_str} ===")
-            print(f"访问: {full_url}")
+            print(f"\n[{i+1}/{days_to_scrape}] 抓取: {full_url}")
             
             try:
                 driver.get(full_url)
-                # 等待久一点，因为哈希跳转可能不刷新页面，需要给Vue反应时间
-                time.sleep(8) 
+                time.sleep(6) # 等待页面动态加载
                 
                 html = driver.page_source
                 day_events = parse_day_content(html, target_date)
@@ -200,26 +223,20 @@ def run_scraper():
                 for e in day_events:
                     cal.events.add(e)
                     total_count += 1
-                    
+                
                 if not day_events:
-                    print(f"    [-] 该日期下未发现【经济数据一览】内容")
+                    print("    (无数据或抓取被拦截)")
 
             except Exception as e:
-                print(f"    [!] 页面处理出错: {e}")
+                print(f"    ! 页面出错: {e}")
 
     except Exception as e:
-        print(f"致命错误: {traceback.format_exc()}")
+        print(f"全局错误: {traceback.format_exc()}")
     finally:
         driver.quit()
 
-    # 保存
+    # 保存文件
     if total_count > 0:
-        output_file = 'jin10_data_specific.ics'
+        output_file = 'jin10_calendar.ics'
         with open(output_file, 'w', encoding='utf-8') as f:
             f.writelines(cal.serialize())
-        print(f"\n全部完成！生成文件: {output_file} (共 {total_count} 条数据)")
-    else:
-        print("\n未抓取到任何数据。")
-
-if __name__ == "__main__":
-    run_scraper()
