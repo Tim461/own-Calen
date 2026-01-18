@@ -35,174 +35,175 @@ def get_driver():
         print(f"浏览器初始化失败: {e}")
         return None
 
-def clean_text_list(text_str):
-    """辅助函数：将 'aaa|bbb||ccc' 清洗为 ['aaa', 'bbb', 'ccc']"""
-    if not text_str:
-        return []
-    # 分割并去除空白项
-    return [x.strip() for x in text_str.split('|') if x.strip()]
-
 def parse_day_content(html_content, current_date):
     """
-    结构化解析：提取表格形式的经济数据和财经大事
+    按照用户指定的列逻辑解析：
+    数据: [时间, 国/区, 指标名称(标题), 重要性, 前值, 预测值, 公布值]
+    大事: [时间, 国/区, 重要性, 事件(标题)]
     """
     events = []
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # 查找所有的大板块容器
-    # 金十的结构通常是 headers 跟着 content
-    # 我们使用 get_text('|') 来保留列结构
+    # 获取每一行，保留竖线分隔符
+    # 金十的布局通常是 div > div.item
+    # 我们先获取所有文本行，用 | 分隔
     raw_lines = soup.get_text("|", strip=True).split("|")
     
-    # 重组 line：因为 get_text('|') 会把一行拆得很碎，我们需要根据视觉上的“行”来重组
-    # 但金十的布局比较复杂，这里采用基于“板块定位”+“行扫描”的策略
+    # 重新组织逻辑：因为 get_text("|") 会打散 DOM 结构，
+    # 我们改用 find_all 遍历 DOM 节点来保证“行”的完整性
+    rows = soup.find_all(['div', 'tr', 'li']) 
     
-    # 重新获取 HTML 块进行精细处理
-    # 寻找包含“经济数据一览”的父级容器
-    # 金十页面通常有明确的 class，但混淆严重。我们遍历所有 div 行。
+    # 状态机：0=无, 1=经济数据, 2=财经大事
+    current_mode = 0 
     
-    # --- 策略更新：针对行的遍历 ---
-    # 我们把 HTML 里的每一行 (div/tr) 拿出来单独处理
-    rows = soup.find_all(['div', 'tr']) 
-    
-    current_section = None # 'DATA' or 'EVENT'
-    
-    processed_texts = set() # 防止重复添加包含关系的 div
+    # 用于去重
+    processed_hashes = set()
 
-    print(f"  正在分析 {current_date} ...")
+    print(f"  正在分析 {current_date} 的表格...")
 
     for row in rows:
-        # 获取该行的文本列表 (保留列分隔)
-        row_text_str = row.get_text("|", strip=True)
-        # 如果这行文本已经被包含在更大的父级里处理过，跳过 (简单的去重)
-        # (实际操作中，完全去重较难，我们通过特征识别来过滤)
+        # 获取该行的文本列列表
+        # 比如: ['20:30', '美国', '失业率', '3.7%', '3.8%', '3.8%']
+        # 注意：重要性(星星)通常抓不到文本，所以列表长度可能会缩短
+        cols = [x.strip() for x in row.get_text("|", strip=True).split('|') if x.strip()]
         
-        cols = clean_text_list(row_text_str)
         if not cols: continue
         
-        full_line_text = "".join(cols)
+        # 将列表转为字符串用于匹配标题和去重
+        full_line = "".join(cols)
+        
+        # --- 1. 切换模式 ---
+        if "经济数据一览" in full_line and len(cols) < 5:
+            current_mode = 1
+            continue
+        elif "财经大事一览" in full_line and len(cols) < 5:
+            current_mode = 2
+            continue
+        elif "期货日历" in full_line or "休市日历" in full_line:
+            current_mode = 0
+            continue
+            
+        if current_mode == 0: continue
 
-        # 1. 识别板块头
-        if "经济数据一览" in full_line_text and len(cols) < 5:
-            current_section = 'DATA'
-            continue
-        if "财经大事一览" in full_line_text and len(cols) < 5:
-            current_section = 'EVENT'
-            continue
-        if "期货日历" in full_line_text or "休市日历" in full_line_text:
-            current_section = None
-            continue
-
-        if current_section is None:
-            continue
-
-        # 2. 识别数据行
-        # 特征：第一列通常是时间 HH:MM
+        # --- 2. 基础过滤 ---
+        # 必须以时间开头 (HH:MM)
         time_col = cols[0]
         if not re.match(r'^\d{2}:\d{2}$', time_col):
             continue
-        
-        # 再次检查：防止抓取到表头（时间、前值、预测值...）
-        if "前值" in full_line_text or "预测值" in full_line_text:
-            continue
             
-        # 防止重复：金十的 DOM 结构嵌套很深，一个 row 可能被 find_all 找到多次
-        # 我们用整行的 hash 来简单去重
-        row_hash = hash(full_line_text)
-        if row_hash in processed_texts:
+        # 过滤表头 (包含“前值”、“预测值”等字样)
+        if "前值" in full_line or "预测值" in full_line or "指标名称" in full_line:
             continue
-        processed_texts.add(row_hash)
 
-        # --- 3. 解析 [经济数据] ---
-        if current_section == 'DATA':
-            # 典型结构: Time | Country | Name | Importance(maybe empty) | Actual | Forecast | Previous
-            # 但是列数不固定 (发布前/发布后不同)
-            # 我们从两头往中间凑
+        # 简单去重
+        row_hash = hash(full_line)
+        if row_hash in processed_hashes: continue
+        processed_hashes.add(row_hash)
+
+        # --- 3. 解析逻辑 (核心) ---
+        
+        evt = Event()
+        
+        # 设定时间
+        hm = time_col.split(':')
+        start_dt = datetime(
+            current_date.year, current_date.month, current_date.day,
+            int(hm[0]), int(hm[1]), tzinfo=pytz.timezone('Asia/Shanghai')
+        )
+        evt.begin = start_dt
+        
+        # 提取国家 (通常是第2列)
+        country = cols[1] if len(cols) > 1 else ""
+
+        # === 模式 1: 经济数据 (目标: 提取第3列作为标题) ===
+        if current_mode == 1:
+            # 理想结构: [时间, 国家, 指标名称, (重要性), 前值, 预测, 公布]
+            # 实际抓取: [时间, 国家, 指标名称, 前值, 预测, 公布] (星星可能丢失)
             
-            event_time = cols[0]
-            country = cols[1] if len(cols) > 1 else "全球"
+            # 我们假设最后3个是数值 (前值, 预测, 公布)
+            # 但有时数值还没出，是 "--"
+            # 策略: 指标名称 = 去掉头(时间,国家) 和 去掉尾(数值) 剩下的部分
             
-            # 指标名称通常是比较长的那一段
-            name = cols[2] if len(cols) > 2 else "未知指标"
-            
-            # 尝试提取数值，数值通常在末尾，且包含数字、%、B、M、K
+            # 提取数值部分 (从后往前找，直到找到不像数值的东西)
             values = []
-            for col in reversed(cols):
-                # 如果包含数字或者是 "--"
-                if re.search(r'\d|--', col) and len(col) < 15:
-                    values.append(col)
-                else:
-                    # 一旦遇到非数值（比如指标名），就停止倒序查找
-                    if len(values) >= 3: # 通常最多3个数值 (公布, 预测, 前值)
-                        break
+            name_parts = []
             
-            # 倒序回来的，所以要反转回去: [前值, 预测, 公布]
-            # 但金十的顺序通常是: 前值 | 预测值 | 公布值 (或者布局顺序不同)
-            # 网页视觉顺序通常是: 指标 ... 前值 预测 公布
-            # 提取到的 values 列表现在是倒序的 [公布, 预测, 前值]
+            # 从第3项开始分析直到末尾
+            potential_data = cols[2:] 
             
-            prev = "--"
-            forecast = "--"
+            # 简单算法：倒数3项如果包含数字、%或--，则认为是数值
+            # 剩下的中间部分全是 指标名称
+            
+            data_vals = [] # 存放提取出的数值
+            indicator_name = "未知指标"
+            
+            # 尝试倒序切分
+            # 通常数值列最多3个 (前值, 预测, 公布)
+            temp_cols = cols.copy()
+            
             actual = "--"
+            forecast = "--"
+            previous = "--"
             
-            if len(values) >= 1: actual = values[0]
-            if len(values) >= 2: forecast = values[1]
-            if len(values) >= 3: prev = values[2]
+            # 如果列表够长，我们认为最后几个是数值
+            # 比如 len=6: Time, Country, Name, Prev, Fore, Act
+            if len(temp_cols) >= 5:
+                actual = temp_cols.pop() if re.search(r'\d|--|%|K|M|B', temp_cols[-1]) else "--"
+                if len(temp_cols) > 3 and re.search(r'\d|--|%|K|M|B', temp_cols[-1]):
+                    forecast = temp_cols.pop()
+                if len(temp_cols) > 2 and re.search(r'\d|--|%|K|M|B', temp_cols[-1]):
+                    previous = temp_cols.pop()
             
-            # 构建事件
-            evt = Event()
-            evt.name = f"🇺🇳[{country}] {name}"
-            
-            # 设置时间
-            hm = event_time.split(':')
-            start_dt = datetime(
-                current_date.year, current_date.month, current_date.day,
-                int(hm[0]), int(hm[1]), tzinfo=pytz.timezone('Asia/Shanghai')
-            )
-            evt.begin = start_dt
-            evt.duration = timedelta(minutes=15)
+            # 剩下的就是 [Time, Country, Name...]
+            # pop(0) 是 Time, pop(0) 是 Country
+            # 剩下的 join 起来就是 Name
+            if len(temp_cols) >= 3:
+                indicator_name = "".join(temp_cols[2:])
+            elif len(temp_cols) > 2:
+                indicator_name = temp_cols[2]
+            else:
+                # 容错
+                indicator_name = "数据发布"
+
+            # 设置标题 (用户要求: 指标名称作为标题)
+            evt.name = f"📊[{country}] {indicator_name}"
             
             evt.description = (
                 f"【经济数据】\n"
-                f"国家/地区: {country}\n"
-                f"指标名称: {name}\n"
+                f"指标: {indicator_name}\n"
+                f"国家: {country}\n"
                 f"------------------\n"
-                f"前值: {prev}\n"
+                f"前值: {previous}\n"
                 f"预测: {forecast}\n"
-                f"公布: {actual}\n"
+                f"公布: {actual}"
             )
+            evt.duration = timedelta(minutes=15)
             events.append(evt)
-            print(f"    [数据] {event_time} {name}")
+            print(f"    [数据] {indicator_name}")
 
-        # --- 4. 解析 [财经大事] ---
-        elif current_section == 'EVENT':
-            # 典型结构: Time | Country | City/Person | Event Content
-            event_time = cols[0]
-            country = cols[1] if len(cols) > 1 else ""
+        # === 模式 2: 财经大事 (目标: 提取第4列作为标题) ===
+        elif current_mode == 2:
+            # 理想结构: [时间, 国家, 重要性, 事件]
+            # 实际抓取: [时间, 国家, 事件] (因为星星通常抓不到)
             
-            # 剩下的合并为事件内容
-            content_parts = cols[2:]
-            content = " ".join(content_parts)
+            # 策略: 最后一列通常就是事件内容
+            event_content = cols[-1]
             
-            evt = Event()
-            evt.name = f"📢[{country}] {content[:15]}..." # 标题不宜太长
-            
-            hm = event_time.split(':')
-            start_dt = datetime(
-                current_date.year, current_date.month, current_date.day,
-                int(hm[0]), int(hm[1]), tzinfo=pytz.timezone('Asia/Shanghai')
-            )
-            evt.begin = start_dt
-            evt.duration = timedelta(minutes=30)
+            # 稍微清洗一下，如果事件内容包含“重要性”字样则忽略
+            if "重要性" in event_content: continue
+
+            # 设置标题 (用户要求: 事件作为标题)
+            evt.name = f"📢[{country}] {event_content}"
             
             evt.description = (
                 f"【财经大事】\n"
                 f"国家: {country}\n"
-                f"时间: {event_time}\n"
-                f"事件: {content}\n"
+                f"时间: {time_col}\n"
+                f"事件: {event_content}"
             )
+            evt.duration = timedelta(minutes=30)
             events.append(evt)
-            print(f"    [大事] {event_time} {content[:10]}")
+            print(f"    [大事] {event_content}")
 
     return events
 
@@ -229,7 +230,7 @@ def run_scraper():
             
             try:
                 driver.get(full_url)
-                time.sleep(5) # 等待加载
+                time.sleep(5) 
                 
                 html = driver.page_source
                 day_events = parse_day_content(html, target_date)
@@ -246,12 +247,11 @@ def run_scraper():
     finally:
         driver.quit()
 
-    # 保存文件
     if total_count > 0:
-        output_file = 'economic_calendar.ics'
+        output_file = 'jin10_calendar.ics'
         with open(output_file, 'w', encoding='utf-8') as f:
             f.writelines(cal.serialize())
-        print(f"\n成功生成 {output_file}，包含 {total_count} 个结构化数据。")
+        print(f"\n成功生成 {output_file}，包含 {total_count} 个事件。")
     else:
         print("\n未获取到数据。")
 
