@@ -2,780 +2,717 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 南非\n时间: 21:00\n事件: 南非央行公布利率决议。
-DURATION:PT30M
-DTSTART:20260326T130000Z
-SUMMARY:📢[南非] 南非央行公布利率决议。
-UID:7dcb630b-2257-4206-9f5f-af980461915a@7dcb.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API精炼油库存(万桶)\n------------------\n前值: -139.4\n预测: -140\n公布: 139.3
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API精炼油库存(万桶)] 数据发布
-UID:17503860-2f71-4e8d-b369-04208775aa64@1750.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周中质馏分油库存(万桶)\n------------------\n前值: 787.2\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T080000Z
-SUMMARY:📊[新加坡至3月25日当周中质馏分油库存(万桶)] 数据发布
-UID:ce9eb94d-aff9-4fab-b619-047f81a2f893@ce9e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME锡库存变化值(吨)] 数据发布
-UID:0cf03011-06d9-4c2a-8826-a2c52d791523@0cf0.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME铝合金库存变化值(吨)] 数据发布
-UID:a8cc3256-ffca-482e-b06d-cbc4a22b442f@a8cc.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME铝库存变化值(吨)] 数据发布
-UID:2b09a689-5b48-4f35-9fcf-4ab1c45d2ed3@2b09.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有4500亿元1年期中期借贷便利（MLF）和205亿元7天期逆回购到期。
-DURATION:PT30M
-DTSTART:20260325T012000Z
-SUMMARY:📢[中国] 今日有4500亿元1年期中期借贷便利（MLF）和205亿元7天期逆回购到期。
-UID:721a6e63-b001-4bcc-a545-103b716c21e3@721a.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API取暖油库存(万桶)\n------------------\n前值: -14\n预测: --\n公布: 30.4
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API取暖油库存(万桶)] 数据发布
-UID:9da4c330-760b-4262-9bbe-ea4079832294@9da4.org
-END:VEVENT
-BEGIN:VEVENT
 DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
 DURATION:PT30M
-DTSTART:20260326T090000Z
+DTSTART:20260327T090000Z
 SUMMARY:📢[] 17:00
-UID:d094e0fc-b3ea-4fe4-a0e3-2cf49d07b922@d094.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有80亿元7天期逆回购到期。
-DURATION:PT30M
-DTSTART:20260330T012000Z
-SUMMARY:📢[中国] 今日有80亿元7天期逆回购到期。
-UID:eb4ed984-8e0c-4f22-8066-44bc8dd89f65@eb4e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周石油钻井总数(口)\n------------------\n前值: 414\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T170000Z
-SUMMARY:📊[美国至3月27日当周石油钻井总数(口)] 数据发布
-UID:fd13e408-fe0a-4b1c-ae5a-d73cfc83e5a4@fd13.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API原油进口(万桶)\n------------------\n前值: 5.6\n预测: --\n公布: -5.8
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API原油进口(万桶)] 数据发布
-UID:3f2bfd4e-073a-4167-831c-7338f22b1a9b@3f2b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
-DURATION:PT30M
-DTSTART:20260325T143000Z
-SUMMARY:📢[] 22:30
-UID:a91218e6-08c9-4a7e-9796-d31c72527a82@a912.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA原油进口(万桶)\n------------------\n前值: -69.2\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA原油进口(万桶)] 数据发布
-UID:ef456ad1-f7a2-44e9-889b-c8dcebc369c1@ef45.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度棉花出口净销售量(包)\n------------------\n前值: 196691\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度棉花出口净销售量(包)] 数据发布
-UID:7ead217c-65b2-4b5e-8b0b-2e4cf9aa6d13@7ead.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME镍库存变化值(吨)\n------------------\n前值: 96\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME镍库存变化值(吨)] 数据发布
-UID:53023d07-d026-4a63-b5ca-3ac14d85a374@5302.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周轻质馏分油库存(万桶)\n------------------\n前值: 1793.4\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T080000Z
-SUMMARY:📊[新加坡至3月25日当周轻质馏分油库存(万桶)] 数据发布
-UID:91c2c664-1087-41ef-aae8-f8cf1de46192@91c2.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME锡库存变化值(吨)] 数据发布
-UID:3c7711fe-dd06-462e-a583-74b9c8105c3f@3c77.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 南非至3月26日回购利率\n------------------\n前值: 6.75%\n预测: 6.75%\n公布: --
-DURATION:PT15M
-DTSTART:20260326T130000Z
-SUMMARY:📊[南非至3月26日回购利率] 数据发布
-UID:591b1342-2daf-42c0-8430-63f72dbd0bf2@591b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME铜库存变化值(吨)] 数据发布
-UID:d60e65de-282c-4260-9a59-8fffa44db814@d60e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 09:30\n事件: 09:30
-DURATION:PT30M
-DTSTART:20260327T013000Z
-SUMMARY:📢[] 09:30
-UID:59201ce9-24fb-43ed-a6c3-a9bcfe272830@5920.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA新配方汽油库存(万桶)\n------------------\n前值: 1.6\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA新配方汽油库存(万桶)] 数据发布
-UID:bba2963d-3a69-4e15-9036-4315c692446c@bba2.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA天然气库存(亿立方英尺)\n------------------\n前值: 350\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T143000Z
-SUMMARY:📊[美国至3月20日当周EIA天然气库存(亿立方英尺)] 数据发布
-UID:b4bae4b7-6d9d-4aa1-9e4b-543dabd76ea4@b4ba.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME铜库存变化值(吨)] 数据发布
-UID:c0b407b6-6266-4b91-a476-09a97b8ac82b@c0b4.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日玉米出口检验量(吨)\n------------------\n前值: 1700178\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T150000Z
-SUMMARY:📊[美国至3月26日玉米出口检验量(吨)] 数据发布
-UID:56ee62e8-9d9e-4b88-bf5c-7137f78ae624@56ee.org
+UID:aa7ac4ee-a01f-4c93-a059-b58b48e18794@aa7a.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月综合PMI\n------------------\n前值: 49.5\n预测: --\n公布: --
 DURATION:PT15M
 DTSTART:20260331T013000Z
 SUMMARY:📊[中国3月综合PMI] 数据发布
-UID:ce008d5e-4469-4ce6-91f9-a9c0d831149c@ce00.org
+UID:37ec7bbf-b971-462c-85b7-6d4a3b80b697@37ec.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME镍库存变化值(吨)] 数据发布
-UID:eda15e93-ba69-4329-9f3f-28e3b20c0a9e@eda1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 23:00\n事件: 23:00
-DURATION:PT30M
-DTSTART:20260330T150000Z
-SUMMARY:📢[] 23:00
-UID:d78d8a71-72a0-4a67-ab65-4e8b707c5607@d78d.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA车用汽油总产量引伸需求数据(万桶/日)\n------------------\n前值: 967.66\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA车用汽油总产量引伸需求数据(万桶/日)] 数据发布
-UID:cbe9b987-8c3c-4d5d-b603-23bd68840f47@cbe9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度玉米出口净销售量(吨)\n------------------\n前值: 1171816\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度玉米出口净销售量(吨)] 数据发布
-UID:1b7365a3-0ca0-4ebb-9ee9-d8a5cc7d442c@1b73.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日小麦出口检验量(吨)\n------------------\n前值: 458411\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T150000Z
-SUMMARY:📊[美国至3月26日小麦出口检验量(吨)] 数据发布
-UID:3cb5d829-1e0c-4e01-bcce-b6f2727929da@3cb5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度豆油出口净销售量(吨)\n------------------\n前值: 5241\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度豆油出口净销售量(吨)] 数据发布
-UID:90034ebb-26fa-4b76-a189-bef38a1cfe19@9003.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
-DURATION:PT30M
-DTSTART:20260327T090000Z
-SUMMARY:📢[] 17:00
-UID:b2f9335f-12ff-4290-b8ec-054089423c79@b2f9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API汽油库存(万桶)\n------------------\n前值: -456\n预测: -193.3\n公布: 52.8
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API汽油库存(万桶)] 数据发布
-UID:1f51bc13-54a3-4f52-b8fd-e5a3b89da502@1f51.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA蒸馏燃油产量引伸需求数据(万桶/日)\n------------------\n前值: 545.1\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA蒸馏燃油产量引伸需求数据(万桶/日)] 数据发布
-UID:8c228ed4-405c-41c4-b700-5c16c13a5751@8c22.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铝合金库存变化值(吨)\n------------------\n前值: 0\n预测: --\n公布: --
 DURATION:PT15M
 DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME铅库存变化值(吨)] 数据发布
-UID:5499076c-d5aa-47d4-b351-1f5c69e69a12@5499.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME铅库存变化值(吨)] 数据发布
-UID:99b17374-97d0-4ef2-950f-9cee08446e3d@99b1.org
+SUMMARY:📊[英国至3月26日LME铝合金库存变化值(吨)] 数据发布
+UID:757c63c5-f5fc-4859-bb82-010dd0a42c24@757c.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:【财经大事】\n国家: \n时间: 21:00\n事件: 21:00
 DURATION:PT30M
 DTSTART:20260326T130000Z
 SUMMARY:📢[] 21:00
-UID:94367db4-13d0-4301-8b9a-08a6e428b3f0@9436.org
+UID:6e48f7ad-8e83-46b8-a135-89f4b880baff@6e48.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA蒸馏燃油产量引伸需求数据(万桶/日)\n------------------\n前值: 474.7\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA蒸馏燃油产量引伸需求数据(万桶/日)] 数据发布
+UID:fc62bba9-aa4c-4b6d-9918-69acf4695713@fc62.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 南非\n时间: 21:00\n事件: 南非央行公布利率决议。
 DURATION:PT30M
-DTSTART:20260325T090000Z
-SUMMARY:📢[] 17:00
-UID:edf24ef2-872d-4cfd-b5c8-f460e6680363@edf2.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 澳大利亚\n时间: 10:40\n事件: 澳洲联储助理主席琼斯发表讲话。
-DURATION:PT30M
-DTSTART:20260325T024000Z
-SUMMARY:📢[澳大利亚] 澳洲联储助理主席琼斯发表讲话。
-UID:1d273e43-acee-4ed0-b2e6-eebd30bee61d@1d27.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME铝库存变化值(吨)] 数据发布
-UID:50857270-8053-4506-ade6-716cd91515a9@5085.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME锌库存变化值(吨)] 数据发布
-UID:db6be460-ea16-4e41-8ddd-7640ee68baba@db6b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME铝合金库存变化值(吨)] 数据发布
-UID:b6e55f6b-d565-4900-a519-99b4e7bd5817@b6e5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME铝库存变化值(吨)] 数据发布
-UID:45690492-473b-4e3b-915f-64446566dca6@4569.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME锌库存变化值(吨)\n------------------\n前值: -75\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME锌库存变化值(吨)] 数据发布
-UID:8ac9add2-9af9-415d-9720-becfc6f74c6e@8ac9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME铝合金库存变化值(吨)\n------------------\n前值: 0\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME铝合金库存变化值(吨)] 数据发布
-UID:257e16c8-ed84-4e6f-a0ac-9bcbbe50858d@257e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度豆粕出口净销售量(吨)\n------------------\n前值: 220900\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度豆粕出口净销售量(吨)] 数据发布
-UID:bb84b220-d648-4ede-8a9b-3b715e69bcc4@bb84.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME铅库存变化值(吨)] 数据发布
-UID:0c4d7ade-905d-4c35-94b4-63411ec82aac@0c4d.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月官方制造业PMI\n------------------\n前值: 49\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T013000Z
-SUMMARY:📊[中国3月官方制造业PMI] 数据发布
-UID:49c9b298-b99d-476b-b41d-e6e53615a797@49c9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周总钻井总数(口)\n------------------\n前值: 552\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T170000Z
-SUMMARY:📊[美国至3月27日当周总钻井总数(口)] 数据发布
-UID:7a0a7ecf-a236-4b36-a66d-7cae06275234@7a0a.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME锌库存变化值(吨)] 数据发布
-UID:eb77df93-7e63-469b-8041-8bc5686c4c6f@eb77.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA精炼油产量(万桶/日)\n------------------\n前值: -7.5\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA精炼油产量(万桶/日)] 数据发布
-UID:5ac4b40b-8b46-4647-aca7-3b503ce8743f@5ac4.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME镍库存变化值(吨)] 数据发布
-UID:21b665c6-8ece-4784-a599-aa48fa0d8aa6@21b6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 09:30\n事件: 09:30
-DURATION:PT30M
-DTSTART:20260331T013000Z
-SUMMARY:📢[] 09:30
-UID:ba7aa89e-01fb-40b9-9b93-e3085e788d2f@ba7a.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME铅库存变化值(吨)\n------------------\n前值: -725\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME铅库存变化值(吨)] 数据发布
-UID:0a552af8-891b-4ead-be1a-91d4b6595745@0a55.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME锌库存变化值(吨)] 数据发布
-UID:54cc017a-5e84-4810-906a-0023122e3e6a@54cc.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 美国\n时间: 07:00\n事件: 美联储副主席杰斐逊发表讲话。
-DURATION:PT30M
-DTSTART:20260326T230000Z
-SUMMARY:📢[美国] 美联储副主席杰斐逊发表讲话。
-UID:bcb957d9-c0a6-4b26-ae8b-49c96564c14d@bcb9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA汽油库存(万桶)\n------------------\n前值: -543.6\n预测: -193.3\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA汽油库存(万桶)] 数据发布
-UID:b122e607-5bef-45be-8196-21d9ae61ecf1@b122.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA精炼厂设备利用率\n------------------\n前值: 91.4%\n预测: 91.7%\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA精炼厂设备利用率] 数据发布
-UID:2c6f4b4e-dbb3-44f0-8547-d080fcf1cdb3@2c6f.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA成品油进口(万桶/日)\n------------------\n前值: 1\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA成品油进口(万桶/日)] 数据发布
-UID:5af1d56f-a00c-4dbe-ac09-afa58bb34310@5af1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME锡库存变化值(吨)\n------------------\n前值: 0\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME锡库存变化值(吨)] 数据发布
-UID:21a6923e-cf03-4e4e-9a02-248476a3e622@21a6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API投产原油量(万桶/日)\n------------------\n前值: 14.7\n预测: --\n公布: 22.3
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API投产原油量(万桶/日)] 数据发布
-UID:c07e9cc0-ee9d-4d04-a3be-89920666382a@c07e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 16:00\n事件: 16:00
-DURATION:PT30M
-DTSTART:20260326T080000Z
-SUMMARY:📢[] 16:00
-UID:3480d75d-f380-445f-8c2e-745df28d0276@3480.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 新加坡\n时间: 16:00\n事件: ESG新加坡周度燃料油库存
-DURATION:PT30M
-DTSTART:20260326T080000Z
-SUMMARY:📢[新加坡] ESG新加坡周度燃料油库存
-UID:769c7aee-cc3e-45b2-8d57-ecc9219cc320@769c.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API原油库存(万桶)\n------------------\n前值: 655.6\n预测: -136.7\n公布: 234.8
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API原油库存(万桶)] 数据发布
-UID:f5d124c1-c496-484b-826d-8233c74df074@f5d1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 美国\n时间: 03:30\n事件: CFTC公布周度持仓报告。
-DURATION:PT30M
-DTSTART:20260327T193000Z
-SUMMARY:📢[美国] CFTC公布周度持仓报告。
-UID:0eb65691-7b2b-4172-920f-1abdae6993a9@0eb6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日大豆出口检验量(吨)\n------------------\n前值: 1101730\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T150000Z
-SUMMARY:📊[美国至3月26日大豆出口检验量(吨)] 数据发布
-UID:004aaabb-7023-4388-88c7-3952f536ecb7@004a.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
-DURATION:PT30M
-DTSTART:20260330T090000Z
-SUMMARY:📢[] 17:00
-UID:e639df5f-6e41-456c-abaa-0478f8611a6c@e639.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME铝库存变化值(吨)] 数据发布
-UID:5ce5db6b-c8a7-4b4e-a4f2-434676797362@5ce5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度小麦出口净销售量(吨)\n------------------\n前值: 189900\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度小麦出口净销售量(吨)] 数据发布
-UID:0677ac34-b1fc-4850-a620-0a159e24bfaa@0677.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA精炼油库存(万桶)\n------------------\n前值: -252.7\n预测: -140\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA精炼油库存(万桶)] 数据发布
-UID:eff04e6b-0537-4191-9d03-e31fc74ac73e@eff0.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月21日当周初请失业金人数(万人)\n------------------\n前值: 20.5\n预测: 21\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月21日当周初请失业金人数(万人)] 数据发布
-UID:679d65d3-91be-4e55-8025-e8eb1bc30220@679d.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API成品油进口(万桶/日)\n------------------\n前值: -14.4\n预测: --\n公布: -17.5
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API成品油进口(万桶/日)] 数据发布
-UID:770e2ab2-bacd-435f-888a-971f084c7b3a@770e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME锡库存变化值(吨)] 数据发布
-UID:f3f714e1-bc5e-4c81-b7b7-905fba54868c@f3f7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国至3月30日钢银电商全国城市总库存量(万吨)\n------------------\n前值: 1200.88\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260329T230000Z
-SUMMARY:📊[中国至3月30日钢银电商全国城市总库存量(万吨)] 数据发布
-UID:7e592acf-3005-49f9-b4ea-6d6d17431a2e@7e59.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA投产原油量(万桶/日)\n------------------\n前值: 6.3\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA投产原油量(万桶/日)] 数据发布
-UID:5c4954f9-799b-4147-84b2-dc33be59a905@5c49.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度大豆出口净销售量(吨)\n------------------\n前值: 298208\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T123000Z
-SUMMARY:📊[美国至3月19日2025/2026市场年度大豆出口净销售量(吨)] 数据发布
-UID:dfcbe6cc-922a-420e-8142-575ab707de64@dfcb.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME铜库存变化值(吨)\n------------------\n前值: 11800\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME铜库存变化值(吨)] 数据发布
-UID:53ae6038-5c15-485f-9c77-4b5221aa6cb7@53ae.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA战略石油储备库存(万桶)\n------------------\n前值: 0\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA战略石油储备库存(万桶)] 数据发布
-UID:6bd37397-d7e7-4b68-8d90-18134d3a9e6b@6bd3.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国3月达拉斯联储商业活动指数\n------------------\n前值: 0.2\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T143000Z
-SUMMARY:📊[美国3月达拉斯联储商业活动指数] 数据发布
-UID:3d1e671f-6406-49b1-9e43-256832c2e6ab@3d1e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME镍库存变化值(吨)] 数据发布
-UID:d79b9075-92ba-4bbd-8af0-098b62035504@d79b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周燃料油库存(万桶)\n------------------\n前值: 2403.8\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T080000Z
-SUMMARY:📊[新加坡至3月25日当周燃料油库存(万桶)] 数据发布
-UID:e7097294-e3e0-4a88-a4bd-d573ec167511@e709.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T090000Z
-SUMMARY:📊[英国至3月31日LME铅库存变化值(吨)] 数据发布
-UID:34c9a84a-1424-48f5-b8fa-c0987aa1aa4e@34c9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 01:00\n事件: 01:00
-DURATION:PT30M
-DTSTART:20260327T170000Z
-SUMMARY:📢[] 01:00
-UID:5c70f5fb-71d2-472f-972e-56202065d3f2@5c70.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月25日LME铝库存变化值(吨)\n------------------\n前值: 0\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T090000Z
-SUMMARY:📊[英国至3月25日LME铝库存变化值(吨)] 数据发布
-UID:4e952496-da1c-484a-bfab-3ed38fc0f100@4e95.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME锡库存变化值(吨)] 数据发布
-UID:9a1ad8fc-f423-4f75-8e49-01dc98c7ad61@9a1a.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 04:30\n事件: 04:30
-DURATION:PT30M
-DTSTART:20260324T203000Z
-SUMMARY:📢[] 04:30
-UID:aae735cc-f726-4575-a766-1f447352982e@aae7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国2月今年迄今规模以上工业企业利润年率\n------------------\n前值: 0.60%\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T013000Z
-SUMMARY:📊[中国2月今年迄今规模以上工业企业利润年率] 数据发布
-UID:a79538ce-3461-431c-bbdf-adbfd5cf79fb@a795.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T090000Z
-SUMMARY:📊[英国至3月27日LME铝合金库存变化值(吨)] 数据发布
-UID:7c1b000a-e37b-4b2d-9b38-d8401873ccef@7c1b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
-DURATION:PT30M
-DTSTART:20260330T143000Z
-SUMMARY:📢[] 22:30
-UID:0407f90b-ae3e-4792-a982-dfe9bc361da2@0407.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA俄克拉荷马州库欣原油库存(万桶)\n------------------\n前值: 94.4\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA俄克拉荷马州库欣原油库存(万桶)] 数据发布
-UID:fdf1cc17-8fc7-4b11-94e7-aa55a54401e3@fdf1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 07:00\n事件: 07:00
-DURATION:PT30M
-DTSTART:20260329T230000Z
-SUMMARY:📢[] 07:00
-UID:95cc2e22-0764-4479-9e5f-7e0a5029e4c9@95cc.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA原油库存(万桶)\n------------------\n前值: 615.6\n预测: -136.7\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA原油库存(万桶)] 数据发布
-UID:3e8b8125-c6b2-4c1c-b790-1b0516728b4e@3e8b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME铜库存变化值(吨)] 数据发布
-UID:6189d269-7d25-4ca6-a424-57cb66b43734@6189.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周API库欣原油库存(万桶)\n------------------\n前值: 81.3\n预测: --\n公布: 398.4
-DURATION:PT15M
-DTSTART:20260324T203000Z
-SUMMARY:📊[美国至3月20日当周API库欣原油库存(万桶)] 数据发布
-UID:43bad677-4ba6-492b-87ed-a8bffecdf37e@43ba.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月非制造业PMI\n------------------\n前值: 49.5\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260331T013000Z
-SUMMARY:📊[中国3月非制造业PMI] 数据发布
-UID:54f1484c-c3ee-474a-812c-6ef4d2a80f23@54f1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周天然气钻井总数(口)\n------------------\n前值: 131\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260327T170000Z
-SUMMARY:📊[美国至3月27日当周天然气钻井总数(口)] 数据发布
-UID:d6de9eaa-e930-42ac-9444-a060778a46da@d6de.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA取暖油库存(万桶)\n------------------\n前值: -8.1\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA取暖油库存(万桶)] 数据发布
-UID:08dc53fd-068e-4903-9d90-b8171d82d662@08dc.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
-DURATION:PT30M
-DTSTART:20260326T143000Z
-SUMMARY:📢[] 22:30
-UID:be18c5b6-f22b-4e8d-8a9d-7a17fc582875@be18.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260326T090000Z
-SUMMARY:📊[英国至3月26日LME镍库存变化值(吨)] 数据发布
-UID:3fb6b0a4-506c-4ff7-8805-aa6228c192bf@3fb6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有175亿元7天期逆回购到期。
-DURATION:PT30M
-DTSTART:20260331T012000Z
-SUMMARY:📢[中国] 今日有175亿元7天期逆回购到期。
-UID:b2c5ccce-d3c7-49e8-a775-331f3206a522@b2c5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有130亿元7天期逆回购到期。
-DURATION:PT30M
-DTSTART:20260326T012000Z
-SUMMARY:📢[中国] 今日有130亿元7天期逆回购到期。
-UID:712377f5-a737-4b91-867b-7c8aab61ec90@7123.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 20:30\n事件: 20:30
-DURATION:PT30M
-DTSTART:20260326T123000Z
-SUMMARY:📢[] 20:30
-UID:b812a640-2667-4299-b3de-51230bc62eb6@b812.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
-DURATION:PT30M
-DTSTART:20260331T090000Z
-SUMMARY:📢[] 17:00
-UID:590142cb-8133-4151-83df-4325ed929d64@5901.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA汽油产量(万桶/日)\n------------------\n前值: -46.2\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA汽油产量(万桶/日)] 数据发布
-UID:aee7b94c-9ffd-4702-8489-2cdef90f414a@aee7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME锌库存变化值(吨)] 数据发布
-UID:d1f29efa-0ad3-481f-b74d-cc47f29770f6@d1f2.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA原油产量引伸需求数据(万桶/日)\n------------------\n前值: 1998.3\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260325T143000Z
-SUMMARY:📊[美国至3月20日当周EIA原油产量引伸需求数据(万桶/日)] 数据发布
-UID:614e587a-080c-493f-80d9-0687f183f6dc@614e.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有205亿元7天期逆回购到期。
-DURATION:PT30M
-DTSTART:20260327T012000Z
-SUMMARY:📢[中国] 今日有205亿元7天期逆回购到期。
-UID:96f8d79f-ff61-4a4f-88c3-79069085cc2e@96f8.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME铝合金库存变化值(吨)] 数据发布
-UID:ef71229d-627a-43c3-a96c-a6a60e43573d@ef71.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
-DURATION:PT15M
-DTSTART:20260330T090000Z
-SUMMARY:📊[英国至3月30日LME铜库存变化值(吨)] 数据发布
-UID:d90bdd2b-f203-4f0d-b6f6-b29f2bd60ac7@d90b.org
+DTSTART:20260326T130000Z
+SUMMARY:📢[南非] 南非央行公布利率决议。
+UID:37008a59-57a1-417a-b311-25ccdd6794a7@3700.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:【财经大事】\n国家: 欧元区\n时间: 10:00\n事件: 欧洲多国开始实行夏令时，欧洲地区金融市场的交易时间和经济数据的公布时间将较冬令时提前一个小时。
 DURATION:PT30M
 DTSTART:20260329T020000Z
 SUMMARY:📢[欧元区] 欧洲多国开始实行夏令时，欧洲地区金融市场的交易时间和经济数据的公布时间将较冬令时提前一个小时。
-UID:d0cf3f8b-b69a-4719-82cf-3f517df3f4de@d0cf.org
+UID:a1cf063f-c6d9-4b9e-9955-a9663dd0067a@a1cf.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME锡库存变化值(吨)] 数据发布
+UID:9ab3e585-b574-41c3-8aa4-434ed18ca9f7@9ab3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度玉米出口净销售量(吨)\n------------------\n前值: 1171816\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度玉米出口净销售量(吨)] 数据发布
+UID:996ccb89-87d9-4bd0-a0cc-b8854bded7c9@996c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 南非至3月26日回购利率\n------------------\n前值: 6.75%\n预测: 6.75%\n公布: --
+DURATION:PT15M
+DTSTART:20260326T130000Z
+SUMMARY:📊[南非至3月26日回购利率] 数据发布
+UID:1661c8c2-a981-468c-8204-a5bfc287aacd@1661.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
+DURATION:PT30M
+DTSTART:20260326T090000Z
+SUMMARY:📢[] 17:00
+UID:66ae754b-f523-40e9-80c8-967355889093@66ae.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME铝库存变化值(吨)] 数据发布
+UID:48be08df-573f-4fb3-806c-33eacda5c9b9@48be.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 美国\n时间: 07:00\n事件: 美联储副主席杰斐逊发表讲话。
+DURATION:PT30M
+DTSTART:20260326T230000Z
+SUMMARY:📢[美国] 美联储副主席杰斐逊发表讲话。
+UID:b752bb93-c244-487d-a1d8-fc2faceff41f@b752.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 08:00\n事件: 08:00
+DURATION:PT30M
+DTSTART:20260401T000000Z
+SUMMARY:📢[] 08:00
+UID:8ae5c765-1c27-48a5-bc5f-884c8f1a79e1@8ae5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME镍库存变化值(吨)] 数据发布
+UID:1491c18d-cc6a-4a5b-877b-fd1b1a04f84f@1491.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国至3月30日钢银电商全国城市总库存量(万吨)\n------------------\n前值: 1200.88\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260329T230000Z
+SUMMARY:📊[中国至3月30日钢银电商全国城市总库存量(万吨)] 数据发布
+UID:1fdacdf5-2617-48ee-8d17-262cc0fbf4cb@1fda.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有175亿元7天期逆回购到期。
+DURATION:PT30M
+DTSTART:20260331T012000Z
+SUMMARY:📢[中国] 今日有175亿元7天期逆回购到期。
+UID:78fea50a-6144-48e5-a15b-f18b38671a18@78fe.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME锌库存变化值(吨)] 数据发布
+UID:2781c89b-1123-4b16-8a2c-1094d2264985@2781.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA俄克拉荷马州库欣原油库存(万桶)\n------------------\n前值: 342.1\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA俄克拉荷马州库欣原油库存(万桶)] 数据发布
+UID:927d73f7-9caf-4ba2-97cc-032029e84e90@927d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME镍库存变化值(吨)] 数据发布
+UID:3f2a4837-d941-4123-a420-4d649617388e@3f2a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME铅库存变化值(吨)] 数据发布
+UID:b599d38c-309f-45e3-bc95-fa6ea7084e96@b599.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月RatingDog制造业PMI\n------------------\n前值: 52.1\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T014500Z
+SUMMARY:📊[中国3月RatingDog制造业PMI] 数据发布
+UID:8f7a1069-a2b2-46e2-992e-74593143b2a6@8f7a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 20:15\n事件: 20:15
+DURATION:PT30M
+DTSTART:20260401T121500Z
+SUMMARY:📢[] 20:15
+UID:e6219f04-c481-4569-bce0-f3b869f2e7b2@e621.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA汽油库存(万桶)\n------------------\n前值: -259.3\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA汽油库存(万桶)] 数据发布
+UID:079b887a-d2c7-4c51-9a9c-4aaa33bd7a48@079b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月官方制造业PMI\n------------------\n前值: 49\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T013000Z
+SUMMARY:📊[中国3月官方制造业PMI] 数据发布
+UID:964ba3f3-9f48-48e4-bcb1-5deae3c715dd@964b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 21:45\n事件: 21:45
+DURATION:PT30M
+DTSTART:20260401T134500Z
+SUMMARY:📢[] 21:45
+UID:302ac117-90d2-4115-8eab-26e7f3d6f00b@302a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度大豆出口净销售量(吨)\n------------------\n前值: 298208\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度大豆出口净销售量(吨)] 数据发布
+UID:780e2a4f-14cd-4bac-9751-bb8d185c2ce9@780e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度豆油出口净销售量(吨)\n------------------\n前值: 5241\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度豆油出口净销售量(吨)] 数据发布
+UID:26f8865b-f5cd-4ec5-8eb9-a46fd5a95d75@26f8.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 23:00\n事件: 23:00
+DURATION:PT30M
+DTSTART:20260330T150000Z
+SUMMARY:📢[] 23:00
+UID:a7a5cd01-10b9-428f-bf7a-a557f4c837a3@a7a5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME铝库存变化值(吨)] 数据发布
+UID:e926ab27-802e-41b9-b6b2-e54c8b9751ba@e926.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME铝库存变化值(吨)] 数据发布
+UID:3c9c25cd-5b05-4470-b55b-469f3bb4ce18@3c9c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
+DURATION:PT30M
+DTSTART:20260331T090000Z
+SUMMARY:📢[] 17:00
+UID:55ee7fad-3c9d-4dc1-8cc1-a396d5478cc5@55ee.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
+DURATION:PT30M
+DTSTART:20260330T090000Z
+SUMMARY:📢[] 17:00
+UID:443c24c3-5ffb-4b85-8e75-28751f140794@443c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周轻质馏分油库存(万桶)\n------------------\n前值: 1793.4\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T080000Z
+SUMMARY:📊[新加坡至3月25日当周轻质馏分油库存(万桶)] 数据发布
+UID:ee8cbea4-bbb5-4398-a0ad-95c7b4291170@ee8c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 新加坡\n时间: 16:00\n事件: ESG新加坡周度燃料油库存
+DURATION:PT30M
+DTSTART:20260326T080000Z
+SUMMARY:📢[新加坡] ESG新加坡周度燃料油库存
+UID:cf38e4c9-5cf5-45a8-8aee-676be6cf9371@cf38.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周中质馏分油库存(万桶)\n------------------\n前值: 787.2\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T080000Z
+SUMMARY:📊[新加坡至3月25日当周中质馏分油库存(万桶)] 数据发布
+UID:be63c414-df46-413f-9a9f-b76dddb2cf47@be63.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国3月非制造业PMI\n------------------\n前值: 49.5\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T013000Z
+SUMMARY:📊[中国3月非制造业PMI] 数据发布
+UID:60ff4ecf-5892-4bac-a5d6-2e3e60ad68d7@60ff.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME锡库存变化值(吨)] 数据发布
+UID:6d9a405a-7091-416b-9df7-c12dde7da40c@6d9a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME铜库存变化值(吨)] 数据发布
+UID:0c7d989c-3151-4456-8632-1adecaffdfc7@0c7d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
+DURATION:PT30M
+DTSTART:20260330T143000Z
+SUMMARY:📢[] 22:30
+UID:5498f7f6-9534-4266-a4e1-f15791b4bcd7@5498.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME铜库存变化值(吨)] 数据发布
+UID:6e9cd8fd-f944-4e48-8eaf-d34df134612f@6e9c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 09:30\n事件: 09:30
+DURATION:PT30M
+DTSTART:20260327T013000Z
+SUMMARY:📢[] 09:30
+UID:19debef4-b80c-4646-8290-022a8a222a92@19de.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有80亿元7天期逆回购到期。
+DURATION:PT30M
+DTSTART:20260330T012000Z
+SUMMARY:📢[中国] 今日有80亿元7天期逆回购到期。
+UID:209b3ced-527c-458b-aa8c-565be798635f@209b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国3月标普全球制造业PMI终值\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T134500Z
+SUMMARY:📊[美国3月标普全球制造业PMI终值] 数据发布
+UID:91186739-d65e-45a4-ac40-3d0624ccdca1@9118.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME锌库存变化值(吨)] 数据发布
+UID:b95f6fb2-2b91-456c-900f-396791964ec8@b95f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 22:00\n事件: 22:00
+DURATION:PT30M
+DTSTART:20260401T140000Z
+SUMMARY:📢[] 22:00
+UID:bed34433-b7d7-4437-9e18-2d74ff1b3eb6@bed3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA原油库存(万桶)\n------------------\n前值: 692.6\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA原油库存(万桶)] 数据发布
+UID:8b45915e-a1d3-4004-9978-e558c52b54f5@8b45.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA原油产量引伸需求数据(万桶/日)\n------------------\n前值: 1913.2\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA原油产量引伸需求数据(万桶/日)] 数据发布
+UID:176aed9b-0d67-41f5-8f13-8b7a89985e62@176a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA车用汽油总产量引伸需求数据(万桶/日)\n------------------\n前值: 979.3\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA车用汽油总产量引伸需求数据(万桶/日)] 数据发布
+UID:1db3a6a8-c31f-4e8f-93dd-8180afe3a6d9@1db3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME铝合金库存变化值(吨)] 数据发布
+UID:f9d91d32-6f8c-4c0c-9996-14947d649d12@f9d9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 中国2月今年迄今规模以上工业企业利润年率\n------------------\n前值: 0.60%\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T013000Z
+SUMMARY:📊[中国2月今年迄今规模以上工业企业利润年率] 数据发布
+UID:b9644e40-e4af-4b5f-a035-11df77d417ee@b964.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铝库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME铝库存变化值(吨)] 数据发布
+UID:b78b8d68-c47d-4a06-b327-81e44e979c21@b78b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周总钻井总数(口)\n------------------\n前值: 552\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T170000Z
+SUMMARY:📊[美国至3月27日当周总钻井总数(口)] 数据发布
+UID:e34296c2-dc44-4014-a7f3-dd7d76ce2b80@e342.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME锌库存变化值(吨)] 数据发布
+UID:8b69a58e-2f71-410e-89d2-e067bf65461c@8b69.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 07:00\n事件: 07:00
+DURATION:PT30M
+DTSTART:20260329T230000Z
+SUMMARY:📢[] 07:00
+UID:496087e4-9255-47a6-ac6d-cb5c29ae2864@4960.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME锌库存变化值(吨)\n------------------\n前值: -625\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME锌库存变化值(吨)] 数据发布
+UID:0662d41c-1abb-47f7-a528-5219768871d0@0662.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
+DURATION:PT30M
+DTSTART:20260401T143000Z
+SUMMARY:📢[] 22:30
+UID:5b8ce86a-28d3-4fb1-aee6-e6b184c53a73@5b8c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 01:00\n事件: 01:00
+DURATION:PT30M
+DTSTART:20260327T170000Z
+SUMMARY:📢[] 01:00
+UID:6ae6e2a8-60aa-4453-bcde-b08efb144b89@6ae6.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME镍库存变化值(吨)] 数据发布
+UID:b7750193-6277-47bd-aa34-b19094fef974@b775.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME锡库存变化值(吨)\n------------------\n前值: -25\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME锡库存变化值(吨)] 数据发布
+UID:05f3ef1a-fda0-4940-8c33-db6a082f45e6@05f3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有205亿元7天期逆回购到期。
+DURATION:PT30M
+DTSTART:20260327T012000Z
+SUMMARY:📢[中国] 今日有205亿元7天期逆回购到期。
+UID:567fa5a8-26d5-4f50-84b8-903f6aaa924f@567f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国3月ISM制造业PMI\n------------------\n前值: 52.4\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T140000Z
+SUMMARY:📊[美国3月ISM制造业PMI] 数据发布
+UID:d360a390-6491-421a-a6fe-c3349152f21d@d360.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日大豆出口检验量(吨)\n------------------\n前值: 1101730\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T150000Z
+SUMMARY:📊[美国至3月26日大豆出口检验量(吨)] 数据发布
+UID:9823b5ab-9226-43c1-8dd2-47e6b910897d@9823.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铜库存变化值(吨)\n------------------\n前值: 900\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME铜库存变化值(吨)] 数据发布
+UID:016a0913-c438-4195-b962-1a2a65018e07@016a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME铅库存变化值(吨)] 数据发布
+UID:89fc41aa-2ee3-441c-ad5d-347af5a8fee4@89fc.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 韩国3月出口年率\n------------------\n前值: 29.00%\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T000000Z
+SUMMARY:📊[韩国3月出口年率] 数据发布
+UID:683d170b-cc4a-44c7-a8fd-a99b36de6e8d@683d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME铝合金库存变化值(吨)] 数据发布
+UID:069d2dd3-f711-40f3-afe7-ddd9d98c1f39@069d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铝库存变化值(吨)\n------------------\n前值: -925\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME铝库存变化值(吨)] 数据发布
+UID:26f428fc-0ff0-4765-bd71-a95e53a3352a@26f4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度豆粕出口净销售量(吨)\n------------------\n前值: 220900\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度豆粕出口净销售量(吨)] 数据发布
+UID:ba4a80f8-1336-4ac1-b940-b3dc0dd9bbf7@ba4a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周EIA精炼油库存(万桶)\n------------------\n前值: 303.2\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T143000Z
+SUMMARY:📊[美国至3月27日当周EIA精炼油库存(万桶)] 数据发布
+UID:a8f33ad5-c787-41c7-9bd6-e3bc0c1c19d1@a8f3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 新加坡至3月25日当周燃料油库存(万桶)\n------------------\n前值: 2403.8\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T080000Z
+SUMMARY:📊[新加坡至3月25日当周燃料油库存(万桶)] 数据发布
+UID:b9c5611b-c318-459f-b858-47d6b286493b@b9c5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日小麦出口检验量(吨)\n------------------\n前值: 458411\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T150000Z
+SUMMARY:📊[美国至3月26日小麦出口检验量(吨)] 数据发布
+UID:a29dc2e0-60f8-42c5-83f6-7ecd15279f53@a29d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME锌库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME锌库存变化值(吨)] 数据发布
+UID:e1b1fc80-2437-4f2b-849b-1c297c3dc6fd@e1b1.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月20日当周EIA天然气库存(亿立方英尺)\n------------------\n前值: 350\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T143000Z
+SUMMARY:📊[美国至3月20日当周EIA天然气库存(亿立方英尺)] 数据发布
+UID:c129b147-39e9-4dfd-b49a-31f76096a063@c129.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME锡库存变化值(吨)] 数据发布
+UID:b78676f2-d390-4a69-8723-99c2d33c0547@b786.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 09:45\n事件: 09:45
+DURATION:PT30M
+DTSTART:20260401T014500Z
+SUMMARY:📢[] 09:45
+UID:05f65ed1-ae26-4fec-aa64-d3b2d7f66359@05f6.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月21日当周初请失业金人数(万人)\n------------------\n前值: 20.5\n预测: 21\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月21日当周初请失业金人数(万人)] 数据发布
+UID:3656e208-eb03-4a47-b4a5-ad4b753b9c29@3656.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周石油钻井总数(口)\n------------------\n前值: 414\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T170000Z
+SUMMARY:📊[美国至3月27日当周石油钻井总数(口)] 数据发布
+UID:3427a5b2-57c0-4fbc-b0f5-4107e251ecbd@3427.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月26日玉米出口检验量(吨)\n------------------\n前值: 1700178\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T150000Z
+SUMMARY:📊[美国至3月26日玉米出口检验量(吨)] 数据发布
+UID:d275f953-8809-4978-9565-ec89252dfdd9@d275.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME铜库存变化值(吨)] 数据发布
+UID:35d9cdcd-c2e1-4920-a581-8fe415c3e171@35d9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月31日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260331T090000Z
+SUMMARY:📊[英国至3月31日LME铝合金库存变化值(吨)] 数据发布
+UID:79a6e7c3-2bf7-4cef-a17f-5f306d06ad46@79a6.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铝合金库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME铝合金库存变化值(吨)] 数据发布
+UID:af3c79c7-eff9-4ed7-9000-a9b9894472f5@af3c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国3月达拉斯联储商业活动指数\n------------------\n前值: 0.2\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T143000Z
+SUMMARY:📊[美国3月达拉斯联储商业活动指数] 数据发布
+UID:ec9c0eec-9528-4256-bd0d-ba96090c7a29@ec9c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度棉花出口净销售量(包)\n------------------\n前值: 196691\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度棉花出口净销售量(包)] 数据发布
+UID:400e1e3c-20bb-4f4e-b752-2a6816f413f8@400e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月19日2025/2026市场年度小麦出口净销售量(吨)\n------------------\n前值: 189900\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T123000Z
+SUMMARY:📊[美国至3月19日2025/2026市场年度小麦出口净销售量(吨)] 数据发布
+UID:d4de724c-c0c3-4442-9ddf-1ea5b1a4b85e@d4de.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有785亿元7天期逆回购到期。
+DURATION:PT30M
+DTSTART:20260401T012000Z
+SUMMARY:📢[中国] 今日有785亿元7天期逆回购到期。
+UID:bb1fb09f-b07d-48eb-8b1b-e7396ca83291@bb1f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 09:30\n事件: 09:30
+DURATION:PT30M
+DTSTART:20260331T013000Z
+SUMMARY:📢[] 09:30
+UID:2457303e-8dc4-48be-9d0a-5dfcd6586362@2457.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至4月1日LME镍库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T090000Z
+SUMMARY:📊[英国至4月1日LME镍库存变化值(吨)] 数据发布
+UID:ba0f6fc7-53f1-48da-bbf7-1f729b505f0a@ba0f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME镍库存变化值(吨)\n------------------\n前值: -432\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME镍库存变化值(吨)] 数据发布
+UID:b342cd5e-e971-42f9-a88e-10eba749c35e@b342.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国至3月27日当周天然气钻井总数(口)\n------------------\n前值: 131\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T170000Z
+SUMMARY:📊[美国至3月27日当周天然气钻井总数(口)] 数据发布
+UID:f454f484-2efa-4a32-a003-a7b4615a7e8b@f454.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月26日LME铅库存变化值(吨)\n------------------\n前值: -200\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260326T090000Z
+SUMMARY:📊[英国至3月26日LME铅库存变化值(吨)] 数据发布
+UID:042c1607-e36b-4b99-8c29-69ec073cdef0@042c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 22:30\n事件: 22:30
+DURATION:PT30M
+DTSTART:20260326T143000Z
+SUMMARY:📢[] 22:30
+UID:56d1a33c-0abc-4b9a-b6c3-edbdea5b71a7@56d1.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 中国\n时间: 09:20\n事件: 今日有130亿元7天期逆回购到期。
+DURATION:PT30M
+DTSTART:20260326T012000Z
+SUMMARY:📢[中国] 今日有130亿元7天期逆回购到期。
+UID:6de9e518-3487-47bf-a255-fdeb5f61420a@6de9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME铅库存变化值(吨)] 数据发布
+UID:f18a1bc8-3e24-469f-a124-4129a4a901ba@f18a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 美国3月ADP就业人数(万人)\n------------------\n前值: 6.3\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260401T121500Z
+SUMMARY:📊[美国3月ADP就业人数(万人)] 数据发布
+UID:e65a4b48-49df-4827-b70d-b0245e44b1d2@e65a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铜库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME铜库存变化值(吨)] 数据发布
+UID:51d3eeae-97ce-4411-ba49-9a18572a9fd7@51d3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 16:00\n事件: 16:00
+DURATION:PT30M
+DTSTART:20260326T080000Z
+SUMMARY:📢[] 16:00
+UID:28812c2d-a832-4802-b086-e2e7700032a8@2881.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: 美国\n时间: 03:30\n事件: CFTC公布周度持仓报告。
+DURATION:PT30M
+DTSTART:20260327T193000Z
+SUMMARY:📢[美国] CFTC公布周度持仓报告。
+UID:7d629b33-6e78-4bd2-ad34-8a5731f75744@7d62.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 17:00\n事件: 17:00
+DURATION:PT30M
+DTSTART:20260401T090000Z
+SUMMARY:📢[] 17:00
+UID:55551f9b-16bd-4b65-b1d8-3e258f9e7027@5555.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【财经大事】\n国家: \n时间: 20:30\n事件: 20:30
+DURATION:PT30M
+DTSTART:20260326T123000Z
+SUMMARY:📢[] 20:30
+UID:e599139a-e9df-458a-a85c-bd3304f2c593@e599.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月27日LME锡库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260327T090000Z
+SUMMARY:📊[英国至3月27日LME锡库存变化值(吨)] 数据发布
+UID:897397fe-b14c-4152-882c-8aff37019416@8973.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:【经济数据】\n指标: 数据发布\n国家: 英国至3月30日LME铅库存变化值(吨)\n------------------\n前值: --\n预测: --\n公布: --
+DURATION:PT15M
+DTSTART:20260330T090000Z
+SUMMARY:📊[英国至3月30日LME铅库存变化值(吨)] 数据发布
+UID:2e87a423-274f-4dd6-80e6-4b989ecc45c1@2e87.org
 END:VEVENT
 END:VCALENDAR
